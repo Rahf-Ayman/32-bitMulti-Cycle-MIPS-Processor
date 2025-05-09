@@ -10,7 +10,7 @@ entity ALUControl is
 	-- input
 	ALUOp : in std_logic_vector(1 downto 0);
 	func : in std_logic_vector(5 downto 0);
-	Op : in std_logic_vector(5 downto 0);
+	
 	-- output
 	operation : out std_logic_vector(3 downto 0)
 	);
@@ -22,8 +22,6 @@ begin
 	
 operation <= "0010" when ALUOp = "00" else -- add (LW or SW instruc) (I_type instruc)
 "0110" when ALUOp = "01" else -- subtract (beq instruc)	(I_type instruc)
-"0000" when ALUOp = "11" and Op = "001100" else -- andi (I_type instruc)
-"0001" when ALUOp = "11" and Op = "001101" else -- ori (I_type instruc)	
 "0010" when ALUOp = "10" and func = "100000" else --add (R_type instruc)
 "0110" when ALUOp = "10" and func = "100010" else --subtract (R_type instruc)
 "0000" when ALUOp = "10" and func = "100100" else --AND (R_type instruc)

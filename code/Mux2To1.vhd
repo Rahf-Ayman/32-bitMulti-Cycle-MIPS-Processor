@@ -9,7 +9,7 @@ entity Mux2To1 is
 	in0:in std_logic_vector(n-1 downto 0); 
 	in1:in std_logic_vector(n-1 downto 0);
 	selector: in std_logic;
-	output:out std_logic_vector(31 downto 0)
+	output:out std_logic_vector(n-1 downto 0)
 	);
 end entity;
 
