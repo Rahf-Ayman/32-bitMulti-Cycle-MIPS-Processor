@@ -185,11 +185,11 @@ end component;
 	end component;
 
 -- internal signal
-signal IROut ,pc_out ,memory_data ,reg_data1 ,reg_data2 ,alu_result ,A ,B ,mdr_out ,Mux1_Out , Mux_MDR_Out ,
+signal pc_out ,memory_data ,reg_data1 ,reg_data2 ,alu_result ,A ,B ,mdr_out ,Mux1_Out , Mux_MDR_Out ,
 SE_Out ,shift1_Out ,Alu_in1 ,Alu_in2 ,Alu_Result_Out ,JumpAddress ,Mux3_Out: std_logic_vector(31 downto 0);
 	signal IRWrite , PCWriteCond , PCWrite 
 	, IorD , MemtoReg , MemWrite , MemRead 
-	, ALUSrcA , RegWrite , RegDst ,zero,ir_write,PcControlOut: std_logic;
+	, ALUSrcA , RegWrite , RegDst ,zero,PcControlOut: std_logic;
 	signal ALUSrcB , PCSource ,AlUOp: std_logic_vector(1 downto 0);
     signal ir_opcode     : std_logic_vector(5 downto 0);
     signal ir_rs , ir_rt ,Mux_Ins_Out : std_logic_vector(4 downto 0);
