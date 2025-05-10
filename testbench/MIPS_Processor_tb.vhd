@@ -13,7 +13,7 @@ architecture behavior of MIPS_Processor_tb is
 			);
     end component;
 
-    -- Signals to connect to the UUT
+    -- Signals to connect to the DUT
     signal clk   : std_logic := '0';
     signal reset : std_logic := '0';
 	
