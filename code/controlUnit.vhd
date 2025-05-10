@@ -49,7 +49,7 @@ type state is(   InstructionFetch,
 				DumpState
       );
 
-signal current_state, next_state : state;
+signal current_state, next_state : state := DumpState ;
 begin
 process(CLK, Reset)
 begin
