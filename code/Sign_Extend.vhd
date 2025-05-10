@@ -1,3 +1,5 @@
+-- Project: MIPS32 multi-cycle
+-- Module:  SignExtend
 library ieee;
 use ieee.std_logic_1164.all;
 

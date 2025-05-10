@@ -1,3 +1,5 @@
+-- Project: MIPS32 multi-cycle
+-- Module:  ShiftLeft26_tb
 library ieee;
 use ieee.std_logic_1164.all;
 

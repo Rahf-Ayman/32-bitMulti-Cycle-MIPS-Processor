@@ -1,6 +1,5 @@
 -- Project: MIPS32 multi-cycle
 -- Module:  Control Top tb
-
 library ieee;
 use ieee.std_logic_1164.all;
 

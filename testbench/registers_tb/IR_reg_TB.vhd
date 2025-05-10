@@ -1,3 +1,5 @@
+-- Project: MIPS32 multi-cycle
+-- Module:  IR_reg_tb
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -61,7 +63,7 @@ begin
         wait for 20 ns;
 
         enable <= '1';
-        IR_in <= x"8C130004"; -- ãËÇá Úáì instruction: LW $19, 4($0)
+        IR_in <= x"8C130004"; -- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ instruction: LW $19, 4($0)
         wait for 20 ns;
 
         IR_in <= x"AC140008"; -- SW $20, 8($0)

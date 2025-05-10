@@ -1,3 +1,5 @@
+-- Project: MIPS32 multi-cycle
+-- Module:  MUX3To1_32_tb
 library ieee;
 use ieee.std_logic_1164.all;
 

@@ -1,8 +1,6 @@
 -- Project: MIPS32 multi-cycle
 -- Module:  Control unit
 -- all instructions : lw , sw , Rtype , beq , jump , addi , ORi , andi
-
-
 library ieee;
 use ieee.std_logic_1164.all;
 

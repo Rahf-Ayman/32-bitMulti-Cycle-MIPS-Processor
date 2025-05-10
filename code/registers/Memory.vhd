@@ -1,3 +1,5 @@
+-- Project: MIPS32 multi-cycle
+-- Module:  Memory
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -17,11 +19,11 @@ architecture rtl of Memory is
     type mem_array is array(0 to 2047) of std_logic_vector(7 downto 0);
     signal memory : mem_array := (
 -- auto generated
--- lw $R0, 47($R20)
-0 => "10001110",  -- opcode for lw
-1 => "00000000",  -- base register (R20)
-2 => "00000000",  -- offset (lower 8 bits)
-3 => "00101111",  -- offset (upper 8 bits)
+-- lw $t1, 0($t0) => 0x8C490000
+0  => x"8C",  -- opcode (100011), rs=$t0 (8), rt=$t1 (9), offset=0
+1  => x"49",
+2  => x"00",
+3  => x"00",
 
 -- addi $R1, $R3, 50
 4 => "00100000",  -- opcode for addi
@@ -64,6 +66,12 @@ architecture rtl of Memory is
 29 => "00001010",  -- base register (R20)
 30 => "00000000",  -- offset (lower 8 bits)
 31 => "00101111",  -- offset (upper 8 bits)
+
+-- Data at 0x00000020: 0xCAFEBABE
+32 => x"CA",
+33 => x"FE",
+34 => x"BA",
+35 => x"BE",
 
 -- Default case for unspecified instructions
 50 => "00000001",  -- some default instruction
