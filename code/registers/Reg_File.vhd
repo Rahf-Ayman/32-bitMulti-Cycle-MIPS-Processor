@@ -18,7 +18,10 @@ end entity;
 
 architecture rtl of Reg_File is
     type reg_array is array (0 to 31) of std_logic_vector(31 downto 0);
-    signal registers : reg_array := (others => (others => '0'));
+    signal registers : reg_array := (
+    2  => x"00000020",
+    others => (others => '0')  
+	);
 begin
 
     process(clk)

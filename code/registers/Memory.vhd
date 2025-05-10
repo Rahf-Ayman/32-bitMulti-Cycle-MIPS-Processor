@@ -15,7 +15,23 @@ end entity;
 
 architecture rtl of Memory is
     type mem_array is array(0 to 2047) of std_logic_vector(7 downto 0);
-    signal memory : mem_array := (others => (others => '0'));
+    signal memory : mem_array := (
+    
+	-- Instruction: lw $t1, 0($t0) => 0x8C490000
+    0  => x"8C",  -- opcode (100011), rs=$t0 (2), rt=$t1 (9), offset=0
+    1  => x"49",
+    2  => x"00",
+    3  => x"00",
+	-- Data at 0x00000020: 0xCAFEBABE
+    32 => x"CA",
+    33 => x"FE",
+    34 => x"BA",
+    35 => x"BE",
+    
+    -- initialize all others to 0
+    others => (others => '0') 
+);
+
 begin
 
     process(clk)

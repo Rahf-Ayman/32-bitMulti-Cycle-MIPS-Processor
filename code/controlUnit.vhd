@@ -47,14 +47,24 @@ type state is(   InstructionFetch,
                 JumpCompletion,
                 RTypeCompletion,
                 WriteBack_I,
-                MemoryReadCompletionStep
+                MemoryReadCompletionStep,
+				DumpState
       );
 
 signal current_state, next_state : state;
 begin
-  
-CTRL_U:process(CLK, Reset, Op)
+process(CLK, Reset)
 begin
+    if Reset = '1' then
+        current_state <= DumpState;
+    elsif rising_edge(CLK) then
+        current_state <= next_state;
+    end if;
+end process;	
+  
+process(current_state, Op)
+begin
+    -- Default values
     PCWrite     <= '0';
     PCWriteCond <= '0';
     IorD        <= '0';
@@ -68,16 +78,10 @@ begin
     ALUSrcA     <= '0';
     RegWrite    <= '0';
     RegDst      <= '0';
-  
-    if Reset = '1' then -- active high
-      current_state <= InstructionFetch;
-    elsif rising_edge(CLK) then
-      current_state <= next_state;
-    end if;
 
     case current_state is
     when InstructionFetch  => 
-      PCWrite  <= '1';
+      	PCWrite  <= '1';
       MemRead  <= '1';
       IRWrite  <= '1';
       ALUSrcB  <= "01";
@@ -179,5 +183,7 @@ begin
     when others =>
       next_state <= InstructionFetch;	
     end case;
-  end process CTRL_U;
+end process;
+  
+  
 end behavior;
