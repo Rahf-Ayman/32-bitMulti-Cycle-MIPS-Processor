@@ -19,12 +19,28 @@ end entity;
 architecture rtl of Reg_File is
     type reg_array is array (0 to 31) of std_logic_vector(31 downto 0);
     signal registers : reg_array := (
-    2  => x"00000020",
-    others => (others => '0')  
+	 0 => x"00000007",  -- Register 0
+    1 => x"00000001",  -- Register 1
+    2 => x"00000002",  -- Register 2
+    3 => x"00000003",  -- Register 3
+    4 => x"00000004",  -- Register 4
+    5 => x"00000005",  -- Register 5
+    6 => x"00000006",  -- Register 6
+    7 => x"00000007",  -- Register 7
+    8 => x"00000008",  -- Register 8
+    9 => x"00000009",  -- Register 9
+    10 => x"0000000A", -- Register 10
+    11 => x"0000000B", -- Register 11
+    12 => x"0000000C", -- Register 12
+    13 => x"0000000D", -- Register 13
+    14 => x"0000000E", -- Register 14
+    15 => x"0000000F", -- Register 15
+    others => (others => '0')  -- Initialize remaining registers to 0
+
 	);
 begin
 
-    process(clk)
+   process(clk)
     begin
         if rising_edge(clk) then
             if reset = '1' then

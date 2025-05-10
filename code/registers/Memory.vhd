@@ -16,22 +16,59 @@ end entity;
 architecture rtl of Memory is
     type mem_array is array(0 to 2047) of std_logic_vector(7 downto 0);
     signal memory : mem_array := (
-    
-	-- Instruction: lw $t1, 0($t0) => 0x8C490000
-    0  => x"8C",  -- opcode (100011), rs=$t0 (2), rt=$t1 (9), offset=0
-    1  => x"49",
-    2  => x"00",
-    3  => x"00",
-	-- Data at 0x00000020: 0xCAFEBABE
-    32 => x"CA",
-    33 => x"FE",
-    34 => x"BA",
-    35 => x"BE",
-    
-    -- initialize all others to 0
-    others => (others => '0') 
-);
+-- auto generated
+-- lw $R0, 47($R20)
+0 => "10001110",  -- opcode for lw
+1 => "00000000",  -- base register (R20)
+2 => "00000000",  -- offset (lower 8 bits)
+3 => "00101111",  -- offset (upper 8 bits)
 
+-- addi $R1, $R3, 50
+4 => "00100000",  -- opcode for addi
+5 => "01100001",  -- source register (R3)
+6 => "00000000",  -- immediate value (lower 8 bits)
+7 => "00110010",  -- immediate value (upper 8 bits)
+
+-- addi $R2, $R3, 48
+8 => "00100000",  -- opcode for addi
+9 => "01100010",  -- source register (R3)
+10 => "00000000", -- immediate value (lower 8 bits)
+11 => "00110000", -- immediate value (upper 8 bits)
+
+-- sw $R1, 0($R2)
+12 => "10101100",  -- opcode for sw
+13 => "00000001",  -- source register (R1)
+14 => "00000000",  -- base register (R2)
+15 => "00000000",  -- offset (lower 8 bits)
+
+-- beq $R1, $R2, 1
+16 => "00010000",  -- opcode for beq
+17 => "00100010",  -- source register (R1)
+18 => "00000000",  -- target register (R2)
+19 => "00000001",  -- immediate value (offset)
+
+-- j 3
+20 => "00001000",  -- opcode for j
+21 => "00000000",  -- address (lower 8 bits)
+22 => "00000000",  -- address (middle 8 bits)
+23 => "00000011",  -- address (upper 8 bits)
+
+-- add $R0, $R1, $R2
+24 => "00000000",  -- opcode for add
+25 => "00100010",  -- source register (R1)
+26 => "00000000",  -- target register (R2)
+27 => "00100000",  -- destination register (R0)
+
+-- lw $R10, 47($R20)
+28 => "10001110",  -- opcode for lw
+29 => "00001010",  -- base register (R20)
+30 => "00000000",  -- offset (lower 8 bits)
+31 => "00101111",  -- offset (upper 8 bits)
+
+-- Default case for unspecified instructions
+50 => "00000001",  -- some default instruction
+others => "00000000"
+);
 begin
 
     process(clk)

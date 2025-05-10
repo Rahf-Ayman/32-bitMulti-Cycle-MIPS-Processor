@@ -183,13 +183,13 @@ architecture behavior of MIPS_Processor is
 --
 
 -- internal signal & constant
-	signal IROut , PC_in , PC_out , MemAddress , WriteData ,MemData 
+	signal IROut , PC_in , PC_out , MemAddress ,MemData 
 		,rs_data , rt_data ,writeData_reg , Aout , Bout ,MDR_Out 
 		,ALU_res ,ALU_out, Alu_in1 ,Alu_in2 ,SE_Out , shift1_Out ,JumpAddress : std_logic_vector(31 downto 0);
 	signal IRWrite , PCWriteCond , PCWrite 
 	, IorD , MemtoReg , MemWrite , MemRead 
 	, ALUSrcA , RegWrite , RegDst ,PC_control ,zero_flag : std_logic;
-	signal ALUSrcB , PCSource ,ALUOp : std_logic_vector(1 downto 0);
+	signal ALUSrcB , PCSource  : std_logic_vector(1 downto 0);
 	signal operation : std_logic_vector(3 downto 0);
 	signal  rd_reg : std_logic_vector(4 downto 0);
 	
@@ -211,7 +211,7 @@ pc_u : PC_reg port map (CLK => CLK,
 memory_u : Memory port map (
         clk        => clk,
         address    => MemAddress,
-        data_in    => WriteData,
+        data_in    => ALU_out,
         mem_write  => MemWrite,
         mem_read   => MemRead,
         data_out   => MemData
